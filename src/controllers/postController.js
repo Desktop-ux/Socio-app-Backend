@@ -3,8 +3,8 @@ const ImageKit = require("../service/storage.service");
 
 const createPost = async (req, res) => {
   try {
-    console.log("BODY 👉", req.body);
-    console.log("FILE 👉", req.file);
+    console.log("BODY", req.body);
+    console.log("FILE", req.file);
 
     const text = req.body.text || "";
     let imageUrl = "";
@@ -32,7 +32,7 @@ const createPost = async (req, res) => {
 
     res.status(201).json(post);
   } catch (error) {
-    console.error("CREATE POST ERROR 👉", error);
+    console.error("CREATE POST ERROR", error);
     res.status(500).json({ message: "Post creation failed" });
   }
 };
