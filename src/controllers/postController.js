@@ -27,7 +27,8 @@ const createPost = async (req, res) => {
       userId: req.user.id,
       username: req.user.username,
       text,
-      imageUrl
+      imageUrl,
+      // createdAt: new Date()
     });
 
     res.status(201).json(post);
