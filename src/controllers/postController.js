@@ -90,9 +90,28 @@ const createPost = async (req, res) => {
   }
 };
 
+const deletePost = async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+
+    if (!post)
+      return res.status(404).json({ message: "Post not found" });
+
+    if (post.userId.toString() !== req.user.id)
+      return res.status(403).json({ message: "Not authorized" });
+
+    await post.deleteOne();
+    res.json({ message: "Post deleted" });
+  } catch (err) {
+    res.status(500).json({ message: "Delete failed" });
+  }
+};
+
+
 module.exports = {
   createPost,
   getPosts,
   likePost,
-  addComment
+  addComment,
+  deletePost
 };
