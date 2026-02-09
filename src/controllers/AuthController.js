@@ -87,7 +87,20 @@ const login = async (req, res) => {
   }
 };
 
+const me = async (req , res)=>{
+   const user = await User.findById(req.user.id).select("-password");
+
+  res.json({
+    user: {
+      id: user._id,
+      username: user.username,
+      email: user.email,
+    },
+  });
+}
+
 module.exports = {
   signup,
   login,
+  me
 };
