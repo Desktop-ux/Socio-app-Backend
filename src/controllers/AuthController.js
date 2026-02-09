@@ -32,6 +32,7 @@ const signup = async (req, res) => {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
         sameSite: "none",
+        path: "/",
         maxAge: 2 * 24 * 60 * 60 * 1000,
       })
       .status(201)
@@ -73,6 +74,7 @@ const login = async (req, res) => {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
         sameSite: "none",
+        path: "/",
         maxAge: 2 * 24 * 60 * 60 * 1000,
       })
       .json({
